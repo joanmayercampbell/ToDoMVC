@@ -94,7 +94,7 @@ namespace ToDo.Controllers
             return View(item);
         }
 
-        public ActionResult MarkDone(int? id)
+        public ActionResult ToggleDone(int? id)
         {
             if (id == null)
             {
@@ -106,7 +106,14 @@ namespace ToDo.Controllers
                 return HttpNotFound();
             }
 
-            item.IsDone = true;
+            if (item.IsDone)
+            {
+                item.IsDone = false;
+            }
+            else
+            {
+                item.IsDone = true;
+            }
 
             db.SaveChanges();
             return RedirectToAction("Index");
