@@ -17,7 +17,9 @@ namespace ToDo.Controllers
         // GET: Items
         public ActionResult Index()
         {
-            var items = db.Items.Include(i => i.List);
+            var items = from n in db.Items
+                        orderby n.ListID, n.DueDateTime
+                        select n;
             return View(items.ToList());
         }
 
@@ -94,6 +96,7 @@ namespace ToDo.Controllers
             return View(item);
         }
 
+
         public ActionResult ToggleDone(int? id)
         {
             if (id == null)
@@ -101,6 +104,7 @@ namespace ToDo.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Item item = db.Items.Find(id);
+
             if (item == null)
             {
                 return HttpNotFound();
@@ -116,6 +120,32 @@ namespace ToDo.Controllers
             }
 
             db.SaveChanges();
+
+            return RedirectToAction("Index");
+
+        }
+
+        public ActionResult AllDone(bool done)
+        {
+            
+            if (done)
+            {
+                foreach (var item in db.Items)
+                {
+                    item.IsDone = true;
+                }
+            }
+            else
+            {
+                foreach (var item in db.Items)
+                {
+                    item.IsDone = false;
+                }
+                
+            }
+
+            db.SaveChanges();
+
             return RedirectToAction("Index");
 
         }

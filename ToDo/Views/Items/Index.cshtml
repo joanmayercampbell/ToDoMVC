@@ -63,6 +63,14 @@
             @Html.ActionLink("Delete", "Delete", new { id=item.ItemID })
         </td>
     </tr>
+    <tr>
+        <td>
+            <a href="@Url.Action("AllDone",true)">
+               Mark All Done
+            </a>
+        </td>
+
+    </tr>
 }
 
 </table>
