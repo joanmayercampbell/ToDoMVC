@@ -23,54 +23,58 @@
         <th>
             @Html.DisplayNameFor(model => model.Details)
         </th>
-       
+
         @*<th>
-            @Html.DisplayNameFor(model => model.List.ListTitle)
-        </th>*@
+                @Html.DisplayNameFor(model => model.List.ListTitle)
+            </th>*@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            <a href="@Url.Action("ToggleDone",new { id = item.ItemID })">
-                @if (item.IsDone)
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <a href="@Url.Action("ToggleDone",new { id = item.ItemID })">
+                    @if (item.IsDone)
                 {
-                    <span class="glyphicon glyphicon-check"></span>
-                }
-                else
-                {
-                    <span class="glyphicon glyphicon-unchecked"></span>
-                }
-            </a>
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ItemName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DueDateTime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Details)
-        </td>
-        
-        @*<td>
-            @Html.DisplayFor(modelItem => item.List.ListTitle)
-        </td>*@
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ItemID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ItemID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ItemID })
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <a href="@Url.Action("AllDone",true)">
-               Mark All Done
-            </a>
-        </td>
+                        <span class="glyphicon glyphicon-check"></span>
+                    }
+                    else
+                    {
+                        <span class="glyphicon glyphicon-unchecked"></span>
+                    }
+                </a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DueDateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Details)
+            </td>
 
-    </tr>
-}
-
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.List.ListTitle)
+                </td>*@
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ItemID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ItemID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ItemID })
+            </td>
+        </tr>
+    }
 </table>
+ <p>
+    <a href="@Url.Action("AllDone",new { done = true })">
+        Mark All Done
+    </a>
+</p>
+<p>
+    <a href="@Url.Action("AllDone",new { done = false })">
+        Unmark All 
+    </a>
+</p>
+
+

@@ -3,9 +3,8 @@
 }
 
 <div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    <h1>To Do Lists</h1>
+    <p class="lead">Your Mind is not a good to do list. Write it down.</p>
 </div>
 
 <div class="row">
@@ -14,16 +13,16 @@
         <p>
             Enter items that you want to get done
         </p>
-        <p>@Html.ActionLink("To Do List","Index","Items")</p>
+        <p>@Html.ActionLink("Edit/Add to your list","Index","Items")</p>
     </div>
     <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+        <h2>Create new list types</h2>
+        <p>Add or View the types of Lists</p>
+        <p>@Html.ActionLink("Edit/Add type of list", "Index", "Lists")</p>
     </div>
-    <div class="col-md-4">
+    @*<div class="col-md-4">
         <h2>Web Hosting</h2>
         <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
         <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
+    </div>*@
 </div>

@@ -41,9 +41,7 @@
             </th>*@
         <th></th>
     </tr>
-</table>
 
-<table class="table">
 
     @foreach (var item in Model.Items)
     {
@@ -71,12 +69,12 @@
                 @Html.DisplayFor(modelItem => item.Details)
             </td>
 
-            <td>
+            @*<td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.ItemID })
                 @Html.ActionLink("Details", "Details", new { id = item.ItemID })
                 @Html.ActionLink("Delete", "Delete", new { id = item.ItemID })
 
-            </td>
+            </td>*@
         </tr>
     }
 
