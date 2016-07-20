@@ -89,6 +89,66 @@ namespace ToDo.Controllers
             }
             return View(list);
         }
+        public ActionResult ToggleDone(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+           Item item = db.Items.Find(id);
+
+            if (item == null)
+            {
+                return HttpNotFound();
+            }
+
+            if (item.IsDone)
+            {
+                item.IsDone = false;
+            }
+            else
+            {
+                item.IsDone = true;
+            }
+
+            db.SaveChanges();
+            return RedirectToAction("Details", new { id = item.ListID });
+
+        }
+
+        public ActionResult AllDone(int? id,bool done)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            List list = db.Lists.Find(id);
+
+            if (list == null)
+            {
+                return HttpNotFound();
+            }
+
+            if (done)
+            {
+                foreach (var i in list.Items)
+                {
+                    i.IsDone = true;
+                }
+            }
+            else
+            {
+                foreach (var i in list.Items)
+                {
+                    i.IsDone = false;
+                }
+
+            }
+
+            db.SaveChanges();
+
+            return RedirectToAction("Details",new { id = list.ListID });
+        }
 
         // GET: Lists/Delete/5
         public ActionResult Delete(int? id)
@@ -124,5 +184,7 @@ namespace ToDo.Controllers
             }
             base.Dispose(disposing);
         }
+
     }
+
 }

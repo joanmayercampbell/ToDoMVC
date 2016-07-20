@@ -70,15 +70,27 @@
             </td>
 
             @*<td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.ItemID })
-                @Html.ActionLink("Details", "Details", new { id = item.ItemID })
-                @Html.ActionLink("Delete", "Delete", new { id = item.ItemID })
+                @Html.ActionLink("Edit", "Edit",Items", new { id = item.ItemID }, null)
+                @Html.ActionLink("Details", "Details","Items" new { id = item.ItemID }, null)
+                @Html.ActionLink("Delete", "Delete","Items", new { id = item.ItemID },null)
 
             </td>*@
         </tr>
     }
 
 </table>
+<p>
+<p>
+    <a href="@Url.Action("AllDone",new { id = Model.ListID, done = true })">
+        Mark All Done
+    </a>
+</p>
+<p>
+    <a href="@Url.Action("AllDone",new { id = Model.ListID, done = false })">
+        Unmark All
+    </a>
+</p>
+</p>
 
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.ListID }) 
